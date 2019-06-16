@@ -7,8 +7,7 @@
           <el-input v-model="ruleForm.username" placeholder="帐号" autoComplete="on"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="ruleForm.password" type="password" placeholder="密码" autoComplete="on"
-                    showPassword></el-input>
+          <el-input v-model="ruleForm.password" type="password" placeholder="密码" autoComplete="on" showPassword ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button class="login-btn-submit" type="primary" @click="submitForm()">登录</el-button>
