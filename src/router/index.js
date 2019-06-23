@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/Login'
-import Index from '@/views/Index'
-import HomePage from '../components/HomePage'
+import Login from '../views/login/Login'
+import Index from '../views/Index'
+import HomePage from '../views/HomePage'
 
 Vue.use(Router);
 
@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'login',
+      name: '登录页',
       component: Login
     },
     {
@@ -20,7 +20,7 @@ export default new Router({
     },
     {
       path: '/homePage',
-      name: 'homePage',
+      name: '首页',
       component: HomePage
     }
   ]

@@ -1,10 +1,9 @@
-'use strict'
+'use strict';
 
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -44,4 +43,4 @@ module.exports = {
 
     bundleAnalyzerReport: process.env.npm_config_report
   }
-}
+};
