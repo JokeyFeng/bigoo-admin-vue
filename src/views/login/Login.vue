@@ -14,13 +14,13 @@
         </el-tab-pane>
         <el-tab-pane label="手机号登录" name="2" :key="2">
           <el-form-item prop="mobile">
-            <el-input v-model="LoginForm.mobile" placeholder="请输入手机号" autoComplete="on">
+            <el-input style="width: 99%" v-model="LoginForm.mobile" placeholder="请输入手机号" autoComplete="on">
             </el-input>
           </el-form-item>
           <el-form-item prop="verifyCode">
-            <el-input v-model="LoginForm.verifyCode" placeholder="请输入验证码" autoComplete="on">
+            <el-input style="width: 65%" v-model="LoginForm.verifyCode" placeholder="请输入验证码" autoComplete="on">
             </el-input>
-            <el-button @click="getCaptcha">获取验证码</el-button>
+            <el-button style="width: 33%" @click="getCaptcha">获取验证码</el-button>
           </el-form-item>
         </el-tab-pane>
       </el-tabs>
@@ -108,7 +108,10 @@
         this.activeKey = val;
       },
       getCaptcha() {
-        alert('暂未开发')
+       // alert('暂未开发');
+        this.$axios.get('/verifyCode').then((response)=>{
+
+        })
       },
       register() {
         this.$emit('register', 'Register')
