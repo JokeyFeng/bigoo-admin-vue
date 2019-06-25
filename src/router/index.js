@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '../views/login/Login'
-import Index from '../views/Index'
 import HomePage from '../views/HomePage'
 
 Vue.use(Router);
@@ -14,14 +13,11 @@ export default new Router({
       component: Login
     },
     {
-      path: '/index',
-      name: 'index',
-      component: Index
-    },
-    {
       path: '/homePage',
       name: '首页',
-      component: HomePage
+      component: HomePage,
+      children: [
+      ]
     }
   ]
 })

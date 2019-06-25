@@ -1,24 +1,35 @@
 <template>
   <div class="login">
-    <el-form :model="LoginForm" :rules="loginRules" ref="LoginForm" @keyup.enter.native="signIn()" status-icon>
-      <el-tabs v-model="activeKey" @tab-click="handleTabsChange">
-        <el-tab-pane label="账号密码登录" name="1" :key="1">
+    <el-form :model="LoginForm" :rules="loginRules" ref="LoginForm" @keyup.enter.native="signIn()">
+      <el-tabs v-model="activeKey" @tab-click="handleTabsChange(activeKey,$event)">
+        <el-tab-pane label="账号密码登录" name="1">
           <el-form-item prop="username">
-            <el-input v-model="LoginForm.username" placeholder="请输入帐号" autoComplete="on">
+            <el-input v-model="LoginForm.username"
+                      placeholder="请输入帐号"
+                      autoComplete="on">
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input v-model="LoginForm.password" type="password" placeholder="请输入密码" autoComplete="on" show-password="true">
+            <el-input v-model="LoginForm.password"
+                      type="password"
+                      placeholder="请输入密码"
+                      autoComplete="on" show-password>
             </el-input>
           </el-form-item>
         </el-tab-pane>
-        <el-tab-pane label="手机号登录" name="2" :key="2">
+        <el-tab-pane label="手机号登录" name="2">
           <el-form-item prop="mobile">
-            <el-input style="width: 99%" v-model="LoginForm.mobile" placeholder="请输入手机号" autoComplete="on">
+            <el-input style="width: 99%"
+                      v-model="LoginForm.mobile"
+                      placeholder="请输入手机号码"
+                      autoComplete="on">
             </el-input>
           </el-form-item>
           <el-form-item prop="verifyCode">
-            <el-input style="width: 65%" v-model="LoginForm.verifyCode" placeholder="请输入验证码" autoComplete="on">
+            <el-input style="width: 65%"
+                      v-model="LoginForm.verifyCode"
+                      placeholder="请输入验证码"
+                      autoComplete="on">
             </el-input>
             <el-button style="width: 33%" @click="getCaptcha">获取验证码</el-button>
           </el-form-item>
@@ -41,7 +52,7 @@
     data() {
       const legalUsername = (rule, value, callback) => {
         if (!isLegalUsername(value)) {
-          callback(new Error('请输入正确的用户名'));
+          callback(new Error('请输入正确的账号'));
         } else {
           callback();
         }
@@ -54,7 +65,7 @@
         }
       };
       return {
-        activeKey: '1',
+        activeKey: '2',
         loading: false,
         LoginForm: {
           username: '',
@@ -68,6 +79,7 @@
         }
       }
     },
+    computed: {},
     methods: {
       signIn() {
         //账号密码登录
@@ -93,7 +105,7 @@
         }
         //手机号登录
         if (this.activeKey === '2') {
-          alert("暂未开发")
+          alert("暂未开发");
         }
       },
       /*  saveLoginData(data) {
@@ -103,13 +115,13 @@
           this.setPermissions(data.permissions);
           this.setRoles(data.roles);
         },*/
-      handleTabsChange(val,event) {
-        console.log(val,event);
+      handleTabsChange(val, event) {
+        console.log(val, event);
         this.activeKey = val;
       },
       getCaptcha() {
-       // alert('暂未开发');
-        this.$axios.get('/verifyCode').then((response)=>{
+        // alert('暂未开发');
+        this.$axios.get('/verifyCode').then((response) => {
 
         })
       },
