@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <el-form :model="LoginForm" :rules="loginRules" ref="LoginForm" @keyup.enter.native="signIn()">
+      <h1 class="login-title">Bigoo管理系统</h1>
       <el-tabs v-model="activeKey" @tab-click="handleTabsChange(activeKey,$event)">
         <el-tab-pane label="账号密码登录" name="1">
           <el-form-item prop="username">
@@ -19,14 +20,14 @@
         </el-tab-pane>
         <el-tab-pane label="手机号登录" name="2">
           <el-form-item prop="mobile">
-            <el-input style="width: 99%"
+            <el-input style="width: 100%"
                       v-model="LoginForm.mobile"
                       placeholder="请输入手机号码"
                       autoComplete="on">
             </el-input>
           </el-form-item>
           <el-form-item prop="verifyCode">
-            <el-input style="width: 65%"
+            <el-input style="width: 65.5%"
                       v-model="LoginForm.verifyCode"
                       placeholder="请输入验证码"
                       autoComplete="on">
@@ -35,12 +36,12 @@
           </el-form-item>
         </el-tab-pane>
       </el-tabs>
-      <div>
-        <a style="float: right" @click="register">注册账户</a>
-      </div>
       <el-form-item>
-        <el-button style="width: 25%" :loading="loading" type="primary" @click="signIn()">登录</el-button>
+        <el-button style="width: 100%;font-size: larger" :loading="loading" type="primary" @click="signIn()">登录</el-button>
       </el-form-item>
+      <div>
+        <a style="float: right;color: cornflowerblue" @click="register">注册账户</a>
+      </div>
     </el-form>
   </div>
 </template>
@@ -65,7 +66,7 @@
         }
       };
       return {
-        activeKey: '2',
+        activeKey: '1',
         loading: false,
         LoginForm: {
           username: '',
@@ -79,7 +80,6 @@
         }
       }
     },
-    computed: {},
     methods: {
       signIn() {
         //账号密码登录
@@ -140,5 +140,16 @@
     transform: translate(-50%, -50%);
     padding: 1em;
     width: 300px;
+    box-shadow: 1px 0 15px #696969;
+    background-color: rgba(38, 50, 56, 0.6);
+  }
+
+  .login-title {
+    font-size: 18px;
+    color: antiquewhite;
+  }
+
+  .el-tab-pane.is-active {
+    color: #e64545 !important;
   }
 </style>
