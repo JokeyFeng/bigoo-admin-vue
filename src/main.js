@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN'
 import Axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+//import 'swiper/dist/css/swiper.css'
 import store from './store'
 import VueApexCharts from 'vue-apexcharts'
 
