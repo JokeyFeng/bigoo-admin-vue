@@ -10,6 +10,10 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect:'/login'
+    },
+    {
       path: '/login',
       name: '登录页',
       component: LoginView

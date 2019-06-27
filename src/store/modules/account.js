@@ -1,7 +1,7 @@
 import localDB from '../../utils/localStorage'
 
 export default {
-  namespace: true,
+  namespaced: true,
   state: {
     token: localDB.get('user_token'),
     expireTime: localDB.get('expire_time'),

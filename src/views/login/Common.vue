@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-   <!-- <div class="content">
-      <div class="top">
-        <div class="header">
-        </div>
-        <div class="desc"></div>
-      </div>
-      <component class="main-content" :is="componentName" @register="handleRegister"></component>
-    </div>-->
+    <!-- <div class="content">
+       <div class="top">
+         <div class="header">
+         </div>
+         <div class="desc"></div>
+       </div>
+       <component class="main-content" :is="componentName" @register="handleRegister"></component>
+     </div>-->
     <component class="main-content" :is="componentName" @register="handleRegister"></component>
   </div>
 </template>
@@ -18,7 +18,7 @@
 
   export default {
     name: 'common',
-    data() {
+    data () {
       return {
         componentName: 'Login'
       }
@@ -28,8 +28,9 @@
       Register
     },
     methods: {
-      handleRegister(value) {
-        this.componentName = value;
+      handleRegister (value) {
+        console.log(value)
+        this.componentName = value
       }
     }
   }
@@ -43,26 +44,32 @@
     overflow: auto;
     background-image: url('../../assets/gif/login_star.gif');
     background-size: 100%;
+
     .content {
       padding: 32px 0;
       flex: 1;
       @media (min-width: 768px) {
         padding: 116px 0 10px;
       }
+
       .top {
         text-align: center;
+
         .header {
           height: 50px;
           line-height: 50px;
+
           a {
             text-decoration: none;
           }
+
           .logo {
             width: 40px;
             height: 19px;
             vertical-align: center;
             margin-right: 16px;
           }
+
           .title {
             font-size: 28px;
             color: rgba(0, 0, 0, .85);
@@ -72,6 +79,7 @@
             top: 6px;
           }
         }
+
         .desc {
           font-size: 14px;
           color: rgba(0, 0, 0, .45);
@@ -79,6 +87,7 @@
           margin-bottom: 40px;
         }
       }
+
       .main-content {
         width: 368px;
         margin: 0 auto;

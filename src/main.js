@@ -9,7 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN'
 import Axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+//import 'swiper/dist/css/swiper.css'
 import store from './store'
 import VueApexCharts from 'vue-apexcharts'
 
@@ -52,7 +52,7 @@ Axios.interceptors.response.use(function (response) {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        store.dispatch('FedLogOut').then(() => {
+        store.dispatch('LogOut').then(() => {
           // 为了重新实例化vue-router对象 避免bug
           location.reload()
         })

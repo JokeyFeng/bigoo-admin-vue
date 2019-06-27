@@ -14,7 +14,8 @@
             <el-input v-model="LoginForm.password"
                       type="password"
                       placeholder="请输入密码"
-                      autoComplete="on" show-password>
+                      autoComplete="on"
+                      show-password>
             </el-input>
           </el-form-item>
         </el-tab-pane>
@@ -37,7 +38,8 @@
         </el-tab-pane>
       </el-tabs>
       <el-form-item>
-        <el-button style="width: 100%;font-size: larger" :loading="loading" type="primary" @click="signIn()">登录</el-button>
+        <el-button style="width: 100%;font-size: larger" :loading="loading" type="primary" @click="signIn()">登录
+        </el-button>
       </el-form-item>
       <div>
         <a style="float: right;color: cornflowerblue" @click="register">注册账户</a>
@@ -46,25 +48,25 @@
   </div>
 </template>
 <script>
-  import {isLegalUsername, isLegalPassword} from "../../utils/validate";
+  import {isLegalUsername, isLegalPassword} from '../../utils/validate'
 
   export default {
-    name: "login",
-    data() {
+    name: 'login',
+    data () {
       const legalUsername = (rule, value, callback) => {
         if (!isLegalUsername(value)) {
-          callback(new Error('请输入正确的账号'));
+          callback(new Error('请输入正确的账号'))
         } else {
-          callback();
+          callback()
         }
-      };
+      }
       const legalPassword = (rule, value, callback) => {
         if (!isLegalPassword(value)) {
-          callback(new Error('密码长度至少3位'));
+          callback(new Error('密码长度至少3位'))
         } else {
-          callback();
+          callback()
         }
-      };
+      }
       return {
         activeKey: '1',
         loading: false,
@@ -81,21 +83,21 @@
       }
     },
     methods: {
-      signIn() {
+      signIn () {
         //账号密码登录
-        console.log(this.activeKey);
+        console.log(this.activeKey)
         if (this.activeKey === '1') {
-          this.loading = true;
-          let username = this.LoginForm.username;
-          let password = this.LoginForm.password;
+          this.loading = true
+          let username = this.LoginForm.username
+          let password = this.LoginForm.password
           this.$axios.post('/login', {
             username: username,
             password: password
           }).then((data) => {
-            localStorage.setItem('user_token', data.data.token);
+            localStorage.setItem('user_token', data.data.token)
             setTimeout(() => {
               this.loading = false
-            });
+            })
             this.$router.push('/homePage')
           }).catch(() => {
             setTimeout(() => {
@@ -105,7 +107,7 @@
         }
         //手机号登录
         if (this.activeKey === '2') {
-          alert("暂未开发");
+          alert('暂未开发')
         }
       },
       /*  saveLoginData(data) {
@@ -115,17 +117,17 @@
           this.setPermissions(data.permissions);
           this.setRoles(data.roles);
         },*/
-      handleTabsChange(val, event) {
-        console.log(val, event);
-        this.activeKey = val;
+      handleTabsChange (val, event) {
+        console.log(val, event)
+        this.activeKey = val
       },
-      getCaptcha() {
-        // alert('暂未开发');
-        this.$axios.get('/verifyCode').then((response) => {
+      getCaptcha () {
+         alert('暂未开发');
+        /*this.$axios.get('/verifyCode').then((response) => {
 
-        })
+        })*/
       },
-      register() {
+      register () {
         this.$emit('register', 'Register')
       }
     }
