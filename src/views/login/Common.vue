@@ -1,20 +1,18 @@
 <template>
   <div class="container">
-    <div class="content">
+   <!-- <div class="content">
       <div class="top">
         <div class="header">
-          <img src="static/bingo.png"/>
-          <span class="title">Bigoo管理系统</span>
         </div>
         <div class="desc"></div>
       </div>
       <component class="main-content" :is="componentName" @register="handleRegister"></component>
-    </div>
+    </div>-->
+    <component class="main-content" :is="componentName" @register="handleRegister"></component>
   </div>
 </template>
 
 <script>
-  import GlobalFooter from '../../components/GlobalFooter'
   import Login from './Login'
   import Register from './Register'
 
@@ -25,8 +23,10 @@
         componentName: 'Login'
       }
     },
-    components: {GlobalFooter, Login, Register},
-    watch: {},
+    components: {
+      Login,
+      Register
+    },
     methods: {
       handleRegister(value) {
         this.componentName = value;
