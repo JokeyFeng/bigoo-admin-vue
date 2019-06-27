@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form :model="LoginForm" :rules="loginRules" ref="LoginForm" @keyup.enter.native="signIn()">
-      <h1 class="login-title">Bigoo管理系统</h1>
+      <h1 class="system-title">Bigoo管理系统</h1>
       <el-tabs v-model="activeKey" @tab-click="handleTabsChange(activeKey,$event)">
         <el-tab-pane label="账号密码登录" name="1">
           <el-form-item prop="username">
@@ -59,14 +59,14 @@
         } else {
           callback()
         }
-      }
+      };
       const legalPassword = (rule, value, callback) => {
         if (!isLegalPassword(value)) {
           callback(new Error('密码长度至少3位'))
         } else {
           callback()
         }
-      }
+      };
       return {
         activeKey: '1',
         loading: false,
@@ -85,19 +85,19 @@
     methods: {
       signIn () {
         //账号密码登录
-        console.log(this.activeKey)
+        console.log(this.activeKey);
         if (this.activeKey === '1') {
-          this.loading = true
-          let username = this.LoginForm.username
-          let password = this.LoginForm.password
+          this.loading = true;
+          let username = this.LoginForm.username;
+          let password = this.LoginForm.password;
           this.$axios.post('/login', {
             username: username,
             password: password
           }).then((data) => {
-            localStorage.setItem('user_token', data.data.token)
+            localStorage.setItem('user_token', data.data.token);
             setTimeout(() => {
               this.loading = false
-            })
+            });
             this.$router.push('/homePage')
           }).catch(() => {
             setTimeout(() => {
@@ -118,8 +118,8 @@
           this.setRoles(data.roles);
         },*/
       handleTabsChange (val, event) {
-        console.log(val, event)
-        this.activeKey = val
+        console.log(val, event);
+        this.activeKey = val;
       },
       getCaptcha () {
          alert('暂未开发');
@@ -128,7 +128,7 @@
         })*/
       },
       register () {
-        this.$emit('register', 'Register')
+        this.$emit('register', 'Register');
       }
     }
   }
@@ -146,8 +146,8 @@
     background-color: rgba(38, 50, 56, 0.6);
   }
 
-  .login-title {
-    font-size: 18px;
+  .system-title {
+    font-size: 20px;
     color: antiquewhite;
   }
 

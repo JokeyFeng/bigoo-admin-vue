@@ -29,8 +29,8 @@
     },
     methods: {
       handleRegister (value) {
-        console.log(value)
-        this.componentName = value
+        console.log(value);
+        this.componentName = value;
       }
     }
   }
@@ -42,7 +42,7 @@
     flex-direction: column;
     height: 100vh;
     overflow: auto;
-    background-image: url('../../assets/gif/login_star.gif');
+    background-image: url('../../assets/gif/login_fish.png');
     background-size: 100%;
 
     .content {
