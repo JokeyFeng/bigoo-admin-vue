@@ -52,7 +52,7 @@ Axios.interceptors.response.use(function (response) {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        store.dispatch('FedLogOut').then(() => {
+        store.dispatch('LogOut').then(() => {
           // 为了重新实例化vue-router对象 避免bug
           location.reload()
         })

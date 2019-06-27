@@ -8,14 +8,14 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="LoginForm.password"
+        <el-input v-model="registerForm.password"
                   type="password"
                   placeholder="请输入密码"
                   autoComplete="on" show-password>
         </el-input>
       </el-form-item>
       <el-form-item prop="password2">
-        <el-input v-model="LoginForm.password2"
+        <el-input v-model="registerForm.password2"
                   type="password"
                   placeholder="确认密码"
                   autoComplete="on" show-password>
