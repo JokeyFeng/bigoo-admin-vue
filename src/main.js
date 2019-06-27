@@ -38,7 +38,7 @@ Axios.interceptors.request.use(function (config) {
 //添加响应拦截器
 Axios.interceptors.response.use(function (response) {
   let data = response.data;
-  if (data.code !== 200) {
+  if (data.code !== 0) {
     Message({
       message: data.message,
       type: 'error',
