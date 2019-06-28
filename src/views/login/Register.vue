@@ -28,8 +28,7 @@
           type="primary"
           :loading="registerBtn"
           :disabled="registerBtn"
-          @click.stop.prevent="register">立即注册
-        </el-button>
+          @click.stop.prevent="register">立即注册</el-button>
         <a class="login" style="float: right;line-height: 40px" @click="returnLogin">使用已有账户登录</a>
       </el-form-item>
     </el-form>

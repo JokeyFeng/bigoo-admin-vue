@@ -10,7 +10,8 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: '127.0.0.1',
+    //host: '127.0.0.1', 本机调试模式，局域网机器无法访问
+    host: '0.0.0.0',
     port: 8848,
     autoOpenBrowser: false,
     errorOverlay: true,

@@ -1,13 +1,5 @@
 <template>
   <div class="container">
-    <!-- <div class="content">
-       <div class="top">
-         <div class="header">
-         </div>
-         <div class="desc"></div>
-       </div>
-       <component class="main-content" :is="componentName" @register="handleRegister"></component>
-     </div>-->
     <component class="main-content" :is="componentName" @register="handleRegister"></component>
   </div>
 </template>
