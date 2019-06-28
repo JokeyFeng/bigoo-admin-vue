@@ -24,13 +24,17 @@
       </el-form-item>
       <el-form-item>
         <el-button
-          style="width: 100%;font-size: larger"
+          style="width: 40%;font-size: larger"
           type="primary"
           :loading="registerBtn"
           :disabled="registerBtn"
           @click.stop.prevent="register">立即注册</el-button>
-        <a class="login" style="float: right;line-height: 40px" @click="returnLogin">使用已有账户登录</a>
       </el-form-item>
+      <div>
+        <el-link type="primary"
+                 style="float: right;line-height: 40px"
+                 @click="returnLogin">已有账户登录</el-link>
+      </div>
     </el-form>
   </div>
 </template>
@@ -58,6 +62,7 @@
     methods: {
       //注册
       register() {
+        this.registerBtn = true;
         let _username = this.registerForm.username;
         let _password = this.registerForm.password;
         this.$axios.post('/v1/user/register', {
@@ -65,9 +70,15 @@
           password: _password
         }).then((data) => {
           console.log(data.message);
+          setTimeout(() => {
+            this.registerBtn = false
+          });
           this.returnLogin();
+        }).catch(() => {
+          setTimeout(() => {
+            this.registerBtn = false
+          })
         })
-
       },
       returnLogin() {
         this.$emit('register', 'Login')

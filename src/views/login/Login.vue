@@ -38,11 +38,16 @@
         </el-tab-pane>
       </el-tabs>
       <el-form-item>
-        <el-button style="width: 100%;font-size: larger" :loading="loading" type="primary" @click="signIn()">登录
+        <el-button style="width: 40%;font-size: larger"
+                   :loading="loading"
+                   type="primary"
+                   @click="signIn()">登录
         </el-button>
       </el-form-item>
       <div>
-        <a style="float: right;color: cornflowerblue" @click="register">注册账户</a>
+        <el-link type="primary"
+                 style="float: right;color: cornflowerblue"
+                 @click="register">注册账户</el-link>
       </div>
     </el-form>
   </div>
