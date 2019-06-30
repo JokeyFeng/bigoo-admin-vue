@@ -17,7 +17,8 @@ import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts);
 Vue.use(VueAwesomeSwiper);
 Vue.prototype.$axios = Axios;
-Axios.defaults.baseURL = 'http://127.0.0.1:9999';
+Axios.defaults.baseURL = 'http://192.168.0.100:9999';
+//Axios.defaults.baseURL = 'http://127.0.0.1:9999';
 Axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8';
 Axios.defaults.timeout = 15000;//请求超时时间
 Vue.use(ElementUI, {locale});

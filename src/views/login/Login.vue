@@ -38,7 +38,7 @@
         </el-tab-pane>
       </el-tabs>
       <el-form-item>
-        <el-button style="width: 40%;font-size: larger"
+        <el-button style="width: 100%;font-size: larger"
                    :loading="loading"
                    type="primary"
                    @click="signIn()">登录
@@ -47,7 +47,8 @@
       <div>
         <el-link type="primary"
                  style="float: right;color: cornflowerblue"
-                 @click="register">注册账户</el-link>
+                 @click="register">注册账户
+        </el-link>
       </div>
     </el-form>
   </div>
@@ -57,7 +58,7 @@
 
   export default {
     name: 'login',
-    data () {
+    data() {
       const legalUsername = (rule, value, callback) => {
         if (!isLegalUsername(value)) {
           callback(new Error('请输入正确的账号'))
@@ -67,7 +68,7 @@
       };
       const legalPassword = (rule, value, callback) => {
         if (!isLegalPassword(value)) {
-          callback(new Error('密码长度至少3位'))
+          callback(new Error('密码长度至少6位'))
         } else {
           callback()
         }
@@ -88,32 +89,37 @@
       }
     },
     methods: {
-      signIn () {
-        //账号密码登录
-        console.log(this.activeKey);
-        if (this.activeKey === '1') {
-          this.loading = true;
-          let username = this.LoginForm.username;
-          let password = this.LoginForm.password;
-          this.$axios.post('/login', {
-            username: username,
-            password: password
-          }).then((data) => {
-            localStorage.setItem('user_token', data.data.token);
-            setTimeout(() => {
-              this.loading = false
-            });
-            this.$router.push('/homePage')
-          }).catch(() => {
-            setTimeout(() => {
-              this.loading = false
-            })
-          })
-        }
-        //手机号登录
-        if (this.activeKey === '2') {
-          alert('暂未开发')
-        }
+      signIn() {
+        //表单没输入内容，无法发起请求
+        this.$refs.LoginForm.validate(valid => {
+          if (valid) {
+            //账号密码登录
+            console.log(this.activeKey);
+            if (this.activeKey === '1') {
+              this.loading = true;
+              let username = this.LoginForm.username;
+              let password = this.LoginForm.password;
+              this.$axios.post('/login', {
+                username: username,
+                password: password
+              }).then((data) => {
+                localStorage.setItem('user_token', data.data.token);
+                setTimeout(() => {
+                  this.loading = false
+                });
+                this.$router.push('/homePage')
+              }).catch(() => {
+                setTimeout(() => {
+                  this.loading = false
+                })
+              })
+            }
+            //手机号登录
+            if (this.activeKey === '2') {
+              alert('暂未开发')
+            }
+          }
+        });
       },
       /*  saveLoginData(data) {
           this.setToken(data.token);
@@ -122,17 +128,17 @@
           this.setPermissions(data.permissions);
           this.setRoles(data.roles);
         },*/
-      handleTabsChange (val, event) {
+      handleTabsChange(val, event) {
         console.log(val, event);
         this.activeKey = val;
       },
-      getCaptcha () {
-         alert('暂未开发');
+      getCaptcha() {
+        alert('暂未开发');
         /*this.$axios.get('/verifyCode').then((response) => {
 
         })*/
       },
-      register () {
+      register() {
         this.$emit('register', 'Register');
       }
     }

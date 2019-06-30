@@ -1,9 +1,7 @@
 <template>
   <div class="footer">
-    <div class="copyright">
-      CopyRight
-      <a-icon type="copyright"></a-icon>
-      2018~2020 Bigoo Shop Station
+    <div style="color: coral" class="copyright">
+      CopyRight@2019~2022 Bigoo Shop Station
     </div>
   </div>
 </template>
@@ -25,9 +23,6 @@
       i {
         font-size: .8rem !important;
       }
-    }
-    &a {
-      text-decoration: none;
     }
   }
 </style>
